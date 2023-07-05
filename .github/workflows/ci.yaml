@@ -2,22 +2,22 @@ name: CI
 
 on:
   push: 
-    branches: [main]
+    branches: [main, develop]
   pull_request:
-    branches: [main]
+    branches: [main, develop]
   
 jobs:
   build:
     runs-on: ubuntu-latest
 
     strategy:
-      matrix: 
-        node-version: [16.x, 18.x, 20.x]
+      matrix:
+        node-version: [16.x, 18.x]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Node js - ${{matrix.node-version}}
+      - name: Node js ${{matrix.node-version}}
         uses: actions/setup-node@v3
       - uses: Install Dependencies
         run: npm install
