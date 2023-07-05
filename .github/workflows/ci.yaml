@@ -11,15 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      matrix: 
-        node-version: [16.x, 18.x, 20.x]
+      matrix:
+        node-version: [18.x]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Node js - ${{matrix.node-version}}
+      - name: Node js ${{matrix.node-version}}
         uses: actions/setup-node@v3
-      - uses: Install Dependencies
+      - name: Install Dependencies
         run: npm install
       - name: Run test
         run: npm run test
